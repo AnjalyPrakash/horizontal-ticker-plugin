@@ -1,6 +1,6 @@
 <?php
 /*
-Plugin Name: Custom Content Scroller
+Plugin Name: Horizontal Custom Content Scroller
 Description: Plugin for scrolling custom content vertically with customizable speed and direction.
 Version: 1.0
 Author: Your Name
@@ -39,15 +39,6 @@ function custom_content_scroller_settings_page() {
             <?php settings_fields('content_scroller_settings_group'); ?>
             <?php do_settings_sections('content_scroller_settings_group'); ?>
             <table class="form-table">
-                <tr valign="top">
-                    <th scope="row">Scroll Direction</th>
-                    <td>
-                        <select name="content_scroller_direction">
-                            <option value="up" <?php selected(get_option('content_scroller_direction'), 'up'); ?>>Upward</option>
-                            <option value="down" <?php selected(get_option('content_scroller_direction'), 'down'); ?>>Downward</option>
-                        </select>
-                    </td>
-                </tr>
                 <tr valign="top">
                     <th scope="row">Scroll Speed (ms)</th>
                     <td><input type="number" name="content_scroller_speed" value="<?php echo esc_attr(get_option('content_scroller_speed', '3000')); ?>" /></td>
