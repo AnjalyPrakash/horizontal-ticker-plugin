@@ -1,9 +1,9 @@
 <?php
 /*
-Plugin Name: Horizontal Custom Content Scroller
-Description: Plugin for scrolling custom content vertically with customizable speed and direction.
+Plugin Name: Horizontal Content Scroller
+Description: Scroll custom content horizontally with customizable speed for a dynamic user experience.
 Version: 1.0
-Author: Your Name
+Author: PottersWheel Media 
 */
 
 function custom_content_scroller_enqueue_scripts() {
@@ -11,13 +11,12 @@ function custom_content_scroller_enqueue_scripts() {
     wp_enqueue_style('custom-content-scroller-style', plugins_url('custom-content-scroller.css', __FILE__));
     wp_localize_script('custom-content-scroller-script', 'scroller_settings', array(
         'speed' => get_option('content_scroller_speed', '3000'),
-        'direction' => get_option('content_scroller_direction', 'down')
     ));
 }
 add_action('wp_enqueue_scripts', 'custom_content_scroller_enqueue_scripts');
 
 function custom_content_scroller_add_admin_menu() {
-    add_menu_page('Content Scroller Settings', 'Content Scroller', 'manage_options', 'content_scroller', 'custom_content_scroller_settings_page');
+    add_menu_page('Content Scroller Settings', 'Horizontal Content Scroller', 'manage_options', 'content_scroller', 'custom_content_scroller_settings_page');
 }
 add_action('admin_menu', 'custom_content_scroller_add_admin_menu');
 
@@ -34,7 +33,8 @@ add_action('admin_init', 'custom_content_scroller_register_settings');
 function custom_content_scroller_settings_page() {
     ?>
     <div class="wrap">
-        <h2>Content Scroller Settings</h2>
+        <h2>Horizontal Content Scroller Settings</h2>
+        <h3>Use Shortcode :- horizontal_custom_content_scroller </h3>
         <form method="post" action="options.php">
             <?php settings_fields('content_scroller_settings_group'); ?>
             <?php do_settings_sections('content_scroller_settings_group'); ?>
@@ -56,7 +56,7 @@ function custom_content_scroller_settings_page() {
     </div>
     <?php
 }
-add_shortcode('custom_content_scroller', 'custom_content_scroller_shortcode');
+add_shortcode('horizontal_custom_content_scroller', 'custom_content_scroller_shortcode');
 
 function custom_content_scroller_shortcode($atts) {
     $atts = shortcode_atts(array(
